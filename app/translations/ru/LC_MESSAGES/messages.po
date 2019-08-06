@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2019-08-05 09:35+0300\n"
+"POT-Creation-Date: 2019-08-05 16:49+0300\n"
 "PO-Revision-Date: 2019-07-29 15:32+0300\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: ru\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.7.0\n"
 
-#: app/__init__.py:19
+#: app/__init__.py:21
 msgid "Please log in to access this page."
 msgstr "Пожалуйста, зарегистрируйтесь чтобы получить доступ к Микроблогу."
 
@@ -159,13 +159,21 @@ msgstr "Вы не можете отписаться от себя!"
 msgid "You are not following %(username)s."
 msgstr "Вы отписались от %(username)s."
 
-#: app/main/routes.py:170
+#: app/main/routes.py:171
 msgid "Your message has been sent."
 msgstr "Ваше сообщение отправлено."
 
-#: app/main/routes.py:172
+#: app/main/routes.py:173
 msgid "Send Message"
 msgstr "Отправить сообщение"
+
+#: app/main/routes.py:212
+msgid "An export task is currently in progress"
+msgstr "Задача экспорта уже запущена"
+
+#: app/main/routes.py:214
+msgid "Exporting posts..."
+msgstr "Экспортируем сообщения..."
 
 #: app/templates/_post.html:16
 #, python-format
@@ -184,19 +192,19 @@ msgstr "Добро пожаловать в Микроблог"
 msgid "Login"
 msgstr "Вход"
 
-#: app/templates/base.html:35 app/templates/messages.html:4
+#: app/templates/base.html:37 app/templates/messages.html:4
 msgid "Messages"
 msgstr "Сообщения"
 
-#: app/templates/base.html:36
+#: app/templates/base.html:46
 msgid "Profile"
 msgstr "Профиль"
 
-#: app/templates/base.html:37
+#: app/templates/base.html:47
 msgid "Logout"
 msgstr "Выход"
 
-#: app/templates/base.html:74
+#: app/templates/base.html:96
 msgid "Error: Could not contact server."
 msgstr "Ошибка: Невозможно соединиться с сервером."
 
@@ -205,11 +213,11 @@ msgstr "Ошибка: Невозможно соединиться с серве�
 msgid "Hi, %(username)s!"
 msgstr "Привет, %(username)s!"
 
-#: app/templates/index.html:17 app/templates/user.html:34
+#: app/templates/index.html:17 app/templates/user.html:37
 msgid "Newer posts"
 msgstr "Новые сообщения"
 
-#: app/templates/index.html:22 app/templates/user.html:39
+#: app/templates/index.html:22 app/templates/user.html:42
 msgid "Older posts"
 msgstr "Старые сообщения"
 
@@ -260,15 +268,19 @@ msgstr "%(count)d подписок"
 msgid "Edit your profile"
 msgstr "Редактировать профиль"
 
-#: app/templates/user.html:17 app/templates/user_popup.html:21
+#: app/templates/user.html:17
+msgid "Export your posts"
+msgstr "Экспортировать ваши сообщения"
+
+#: app/templates/user.html:20 app/templates/user_popup.html:21
 msgid "Follow"
 msgstr "Подписаться"
 
-#: app/templates/user.html:19 app/templates/user_popup.html:25
+#: app/templates/user.html:22 app/templates/user_popup.html:25
 msgid "Unfollow"
 msgstr "Отписаться"
 
-#: app/templates/user.html:22
+#: app/templates/user.html:25
 msgid "Send private message"
 msgstr "Отправить личное сообщение"
 

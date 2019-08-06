@@ -12,3 +12,4 @@ guess-language_spirit
 pyjwt
 python-dotenv
 requests
+rq

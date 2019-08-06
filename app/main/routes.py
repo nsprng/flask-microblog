@@ -77,6 +77,13 @@ def user(username):
                            next_url=next_url, prev_url=prev_url)
 
 
+@bp.route('/user/<username>/popup')
+@login_required
+def user_popup(username):
+    user = User.query.filter_by(username=username).first_or_404()
+    return render_template('user_popup.html', user=user)
+
+
 @bp.route('/edit_profile', methods=['GET', 'POST'])
 @login_required
 def edit_profile():
@@ -150,13 +157,6 @@ def search():
                            next_url=next_url, prev_url=prev_url)
 
 
-@bp.route('/user/<username>/popup')
-@login_required
-def user_popup(username):
-    user = User.query.filter_by(username=username).first_or_404()
-    return render_template('user_popup.html', user=user)
-
-
 @bp.route('/send_message/<recipient>', methods=['GET', 'POST'])
 @login_required
 def send_message(recipient):
@@ -166,7 +166,7 @@ def send_message(recipient):
         msg = Message(author=current_user, recipient=user,
                       body=form.message.data)
         db.session.add(msg)
-        user.add_notification('unread_messsage_count', user.new_messages())
+        user.add_notification('unread_message_count', user.new_messages())
         db.session.commit()
         flash(_('Your message has been sent.'))
         return redirect(url_for('main.user', username=recipient))
@@ -178,7 +178,7 @@ def send_message(recipient):
 @login_required
 def messages():
     current_user.last_message_read_time = datetime.utcnow()
-    current_user.add_notification('unread_messsage_count', 0)
+    current_user.add_notification('unread_message_count', 0)
     db.session.commit()
     page = request.args.get('page', 1, type=int)
     messages = current_user.messages_received.order_by(
@@ -192,6 +192,17 @@ def messages():
                            next_url=next_url, prev_url=prev_url)
 
 
+@bp.route('/export_posts')
+@login_required
+def export_posts():
+    if current_user.get_task_in_progress('export_posts'):
+        flash(_('An export task is currently in progress'))
+    else:
+        current_user.launch_task('export_posts', _('Exporting posts...'))
+        db.session.commit()
+    return redirect(url_for('main.user', username=current_user.username))
+
+
 @bp.route('/notifications')
 @login_required
 def notifications():
@@ -203,4 +214,3 @@ def notifications():
         'data': n.get_data(),
         'timestamp': n.timestamp
     } for n in notifications])
-    
