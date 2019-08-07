@@ -2,6 +2,7 @@ elasticsearch
 flask
 flask-babel
 flask-bootstrap
+flask-httpauth
 flask_login
 flask-mail
 flask-migrate
