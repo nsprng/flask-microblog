@@ -1,4 +1,5 @@
 elasticsearch
+email_validator
 flask
 flask-babel
 flask-bootstrap
