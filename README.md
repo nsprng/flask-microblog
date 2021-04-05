@@ -26,6 +26,10 @@ docker run -dit --network microblog --name microblog-elasticsearch -h es-server 
 	-e "discovery.type=single-node" \
 	elasticsearch:6.8.2
 ```
+### Build an image:
+```bash
+docker build -t microblog:latest .
+```
 ### Start RQ Worker:
 ```bash
 docker run -dit --network microblog --name microblog-rq-worker -h rq-worker \
